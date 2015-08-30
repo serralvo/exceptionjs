@@ -10,19 +10,16 @@ window.onerror = function (errorMsg, url, lineNumber) {
         platform: navigator.platform
     };
     
-    console.log(errors);
-    
-    sendToAPI(errors);
+    sendToYourBackend(errors);
 }
 
-// using jQuery to make a request
-
-function sendToAPI(e) {
+// using jQuery to make the request
+function sendToYourBackend(errors) {
     
     $.ajax({
         type: "POST",
-        url: "http://erros.api.co/js",
-        data: { errorList: e },
+        url: "http://errors.yourbackend.co/js",
+        data: { errorList: errors },
         success: function(r) {
             console.log(r);
         }
